@@ -115,7 +115,6 @@ func (m *JWTMiddleware) Handler(h http.Handler) http.Handler {
 			return
 		}
 
-		log.Println("serving next: ", r.Context())
 		h.ServeHTTP(w, r)
 	})
 }
@@ -231,9 +230,6 @@ func (m *JWTMiddleware) CheckJWT(w http.ResponseWriter, r *http.Request) (*http.
 
 	// If we get here, everything worked and we can set the
 	// user property in context.
-
-	log.Println("user prop: ", m.Options.UserProperty)
-	log.Println("parsed token: ", parsedToken)
 
 	ctx := r.Context()
 	ctx = context.WithValue(ctx, m.Options.UserProperty, parsedToken)
