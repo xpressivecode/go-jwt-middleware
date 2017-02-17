@@ -236,8 +236,6 @@ func (m *JWTMiddleware) CheckJWT(w http.ResponseWriter, r *http.Request) (*http.
 
 	r = r.WithContext(ctx)
 
-	log.Println("context!!!: ", ctx)
-
 	return r, nil
 }
 
